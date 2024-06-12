@@ -185,7 +185,9 @@ class TestOntologiesController < TestCase
   end
 
   def test_download_ontology_csv
-    num_onts_created, created_ont_acronyms, onts = create_ontologies_and_submissions(ont_count: 1, submission_count: 1, process_submission: true)
+    num_onts_created, created_ont_acronyms, onts = create_ontologies_and_submissions(ont_count: 1, submission_count: 1,
+                                                                                     process_submission: true,
+                                                                                     process_options:{process_rdf: true, extract_metadata: true, index_search: true})
     ont = onts.first
     acronym = created_ont_acronyms.first
 
@@ -217,13 +219,13 @@ class TestOntologiesController < TestCase
     begin
       allowed_user = User.new({
         username: "allowed",
-        email: "test@example.org",
+        email: "test1@example.org",
         password: "12345"
       })
       allowed_user.save
       blocked_user = User.new({
         username: "blocked",
-        email: "test@example.org",
+        email: "test2@example.org",
         password: "12345"
       })
       blocked_user.save
