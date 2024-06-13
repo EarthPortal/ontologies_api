@@ -3,7 +3,7 @@
 APP_PATH = '/srv/ontoportal'
 
 set :application, 'ontologies_api'
-set :repo_url, "https://github.com/ncbo/#{fetch(:application)}.git"
+set :repo_url, "https://github.com/EarthPortal/#{fetch(:application)}.git"
 
 set :deploy_via, :remote_cache
 
