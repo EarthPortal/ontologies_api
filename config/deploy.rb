@@ -105,8 +105,7 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :get_config
-  after :get_config, :restart
+  after :publishing, :restart
   # after :deploy, :smoke_test
 
   after :restart, :clear_cache do
