@@ -11,7 +11,7 @@
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'localhost', roles: %w{app}
+server 'earthportal.eu', roles: %w{app}
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -46,4 +46,4 @@ remove :linked_dirs, 'vendor/bundle'
 # PRIVATE_CONFIG_REPO = ENV.include?('PRIVATE_CONFIG_REPO') ? ENV['PRIVATE_CONFIG_REPO'] : 'git@github.com:your_org/private-config-repo.git'
 
 # location of local configuration files
-LOCAL_CONFIG_PATH = ENV.include?('LOCAL_CONFIG_PATH') ? ENV['LOCAL_CONFIG_PATH'] : '/srv/ontoportal/virtual_appliance/appliance_config'
+# LOCAL_CONFIG_PATH = ENV.include?('LOCAL_CONFIG_PATH') ? ENV['LOCAL_CONFIG_PATH'] : '/srv/ontoportal/virtual_appliance/appliance_config'
