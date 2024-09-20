@@ -1,24 +1,28 @@
 source 'https://rubygems.org'
 
-gem 'activesupport', '~> 3.0'
+gem 'activesupport', '~> 3.2'
 # see https://github.com/ncbo/ontologies_api/issues/69
 gem 'bigdecimal', '1.4.2'
 gem 'faraday', '~> 1.9'
 gem 'json-schema', '~> 2.0'
 gem 'multi_json', '~> 1.0'
-gem 'oj', '~> 2.0'
+gem 'oj'
 gem 'parseconfig'
 gem 'rack'
 gem 'rake', '~> 10.0'
 gem 'sinatra', '~> 1.0'
 gem 'sinatra-advanced-routes'
 gem 'sinatra-contrib', '~> 1.0'
+gem 'request_store'
+gem 'parallel'
+gem 'json-ld'
+gem 'google-protobuf', '3.25.3'
 
 # Rack middleware
 gem 'ffi'
 gem 'rack-accept', '~> 0.4'
 gem 'rack-attack', '~> 6.6.1', require: 'rack/attack'
-gem 'rack-cache', '~> 1.0'
+gem 'rack-cache', '~> 1.13.0'
 gem 'rack-cors', require: 'rack/cors'
 # GitHub dependency can be removed when https://github.com/niko/rack-post-body-to-params/pull/6 is merged and released
 gem 'rack-post-body-to-params', github: 'palexander/rack-post-body-to-params', branch: 'multipart_support'
@@ -27,7 +31,7 @@ gem 'redis-rack-cache', '~> 2.0'
 
 # Data access (caching)
 gem 'redis'
-gem 'redis-activesupport'
+gem 'redis-store', '~>1.10'
 
 # Monitoring
 gem 'cube-ruby', require: 'cube'
@@ -42,11 +46,11 @@ gem 'haml', '~> 5.2.2' # pin see https://github.com/ncbo/ontologies_api/pull/107
 gem 'redcarpet'
 
 # NCBO gems (can be from a local dev path or from rubygems/git)
-gem 'goo', git: 'https://github.com/ontoportal-lirmm/goo.git', branch: 'development'
-gem 'ncbo_annotator', git: 'https://github.com/ontoportal-lirmm/ncbo_annotator.git', branch: 'master'
+gem 'ncbo_annotator', git: 'https://github.com/ontoportal-lirmm/ncbo_annotator.git', branch: 'development'
 gem 'ncbo_cron', git: 'https://github.com/ontoportal-lirmm/ncbo_cron.git', branch: 'master'
 gem 'ncbo_ontology_recommender', git: 'https://github.com/ncbo/ncbo_ontology_recommender.git', branch: 'master'
-gem 'sparql-client', github: 'ontoportal-lirmm/sparql-client', branch: 'master'
+gem 'goo', github: 'ontoportal-lirmm/goo', branch: 'development'
+gem 'sparql-client', github: 'ontoportal-lirmm/sparql-client', branch: 'development'
 gem 'ontologies_linked_data', git: 'https://github.com/ontoportal-lirmm/ontologies_linked_data.git', branch: 'development'
 
 group :development do
@@ -61,6 +65,7 @@ group :development do
   gem 'shotgun', github: 'palexander/shotgun', branch: 'ncbo'
 end
 
+
 group :profiling do
   gem 'rack-mini-profiler'
 end
@@ -71,4 +76,5 @@ group :test do
   gem 'rack-test'
   gem 'simplecov', require: false
   gem 'simplecov-cobertura' # for codecov.io
+  gem 'webmock', '~> 3.19.1'
 end
