@@ -2,6 +2,11 @@ set :author, "ontoportal-lirmm"
 set :application, "ontologies_api"
 set :repo_url, "https://github.com/#{fetch(:author)}/#{fetch(:application)}.git"
 
+APP_PATH = '/srv/ontoportal'
+
+set :application, 'ontologies_api'
+set :repo_url, "https://github.com/EarthPortal/#{fetch(:application)}.git"
+
 set :deploy_via, :remote_cache
 
 # Default branch is :master
@@ -120,8 +125,8 @@ namespace :deploy do
     end
   end
 
-  after :updating, :get_config
   after :publishing, :restart
+  # after :deploy, :smoke_test
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
