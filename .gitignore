@@ -11,14 +11,12 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-vendor
 log/**
 logs/**
 .tags*
 cache/**
 vendor/bundle/*
 ontologies_api.iml
-.env
 
 # YARD artifacts
 .yardoc
@@ -38,7 +36,6 @@ config/environments/*
 !config/environments/config.rb.sample
 
 #ignore capistrano deployment
-config/deploy/*
 config/*.p12
 
 # Ignore generated test data
