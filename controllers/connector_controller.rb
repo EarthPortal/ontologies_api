@@ -1,7 +1,5 @@
 class ConnectorController < ApplicationController
   namespace "/connector" do
-    VALID_SOURCES = ['ANR', 'CORDIS'].freeze
-
     get "/projects" do
       validate_source!
       begin
@@ -17,7 +15,8 @@ class ConnectorController < ApplicationController
     def validate_source!
       @source = params[:source]&.upcase
       error 400, { error: "Source parameter is required" } if @source.nil?
-      error 400, { error: "Invalid source. Valid sources: #{VALID_SOURCES.join(', ')}" } unless VALID_SOURCES.include?(@source)
+      valid_sources = LinkedData.settings.project_sources
+      error 400, { error: "Invalid source. Valid sources: #{valid_sources.join(', ')}" } unless valid_sources.include?(@source)
     end
   end
 end
