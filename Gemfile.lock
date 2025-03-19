@@ -1,4 +1,24 @@
 GIT
+  remote: https://github.com/earthportal/ontologies_linked_data.git
+  revision: 6f082e7055a51707b87f326bd1f93ae84533ae1c
+  branch: feature/projects
+  specs:
+    ontologies_linked_data (0.0.1)
+      activesupport
+      bcrypt
+      goo
+      json
+      libxml-ruby
+      multi_json
+      oj
+      omni_logger
+      pony
+      rack
+      rack-test
+      rsolr
+      rubyzip
+
+GIT
   remote: https://github.com/ontoportal-lirmm/goo.git
   revision: e48a2d13a65cc2dd1c12d116cfc9da9061106861
   branch: development
@@ -54,26 +74,6 @@ GIT
       ncbo_annotator
       ontologies_linked_data
       redis
-
-GIT
-  remote: https://github.com/ontoportal-lirmm/ontologies_linked_data.git
-  revision: 6f082e7055a51707b87f326bd1f93ae84533ae1c
-  branch: feature/projects
-  specs:
-    ontologies_linked_data (0.0.1)
-      activesupport
-      bcrypt
-      goo
-      json
-      libxml-ruby
-      multi_json
-      oj
-      omni_logger
-      pony
-      rack
-      rack-test
-      rsolr
-      rubyzip
 
 GIT
   remote: https://github.com/ontoportal-lirmm/sparql-client.git
