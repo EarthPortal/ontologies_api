@@ -15,7 +15,7 @@ class ConnectorController < ApplicationController
     def validate_source!
       @source = params[:source]&.upcase
       error 400, { error: "Source parameter is required" } if @source.nil?
-      valid_sources = LinkedData.settings.project_sources
+      valid_sources = LinkedData.settings.connectors[:available_sources].keys
       error 400, { error: "Invalid source. Valid sources: #{valid_sources.join(', ')}" } unless valid_sources.include?(@source)
     end
   end
