@@ -6,6 +6,10 @@ class ConnectorController < ApplicationController
         connector = Connectors::Factory.create(@source)
         response = connector.fetch_projects(params)
         reply 200, response
+      rescue Connectors::ProjectNotFoundError => e
+        error 404, { error: e.message }
+      rescue Connectors::ConnectorError => e
+        error 400, { error: e.message }
       rescue StandardError => e
         error 500, { error: e.message }
       end
