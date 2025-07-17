@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/earthportal/ontologies_linked_data.git
-  revision: 96fe46904909f9a2f4b9360d9a0cf2ced6a0ecbe
+  revision: 7504c2524f8add304d2cf95c9316aacc9e0c3068
   branch: development
   specs:
     ontologies_linked_data (0.0.1)
