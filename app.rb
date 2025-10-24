@@ -82,7 +82,7 @@ end
 require_relative "config/environments/#{environment}.rb"
 
 # Development-specific options
-if [:development, :console].include?(settings.environment)
+if %i[development console].include?(settings.environment)
   require 'pry' # Debug by placing 'binding.pry' where you want the interactive console to start
   # Show exceptions
   set :raise_errors, true
@@ -96,13 +96,15 @@ end
 use Rack::Cors do
   allow do
     origins '*'
-    resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+    resource '*', headers: :any, methods: %i[get post put patch delete options]
   end
 end
 
 # Show exceptions after timeout
 if LinkedData::OntologiesAPI.settings.enable_req_timeout
-  use Rack::Timeout; Rack::Timeout.timeout = LinkedData::OntologiesAPI.settings.req_timeout # seconds, shorter than unicorn timeout
+  use Rack::Timeout
+
+  Rack::Timeout.timeout = LinkedData::OntologiesAPI.settings.req_timeout # seconds, shorter than unicorn timeout
 end
 
 use Rack::SliceDetection
@@ -116,9 +118,7 @@ use Rack::RequestLang
 use LinkedData::Security::Authorization
 use LinkedData::Security::AccessDenied
 
-if LinkedData::OntologiesAPI.settings.enable_throttling
-  require_relative 'config/rack_attack'
-end
+require_relative 'config/rack_attack' if LinkedData::OntologiesAPI.settings.enable_throttling
 
 if LinkedData.settings.enable_http_cache
   require 'rack/cache'
@@ -158,9 +158,9 @@ require_relative 'init'
 # Enter console mode
 if settings.environment == :console
   require 'rack/test'
-  include Rack::Test::Methods;
+  include Rack::Test::Methods
 
-  def app()
+  def app
     Sinatra::Application
   end
 
