@@ -40,7 +40,8 @@ class FederationController < ApplicationController
           synonym:    item["synonyms"] || [],                                                 
           definition: item["descriptions"] || [],                                             
           obsolete:   item["obsolete"] || false,                                              
-          matchType:  "prefLabel",                                                            
+          matchType:  "",                 
+          ontologyType: "",                                           
           ontology_rank: 0.0                                                                  
         }   
 
