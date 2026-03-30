@@ -17,7 +17,7 @@ class FederationController < ApplicationController
         error 400, "You must provide a 'query' parameter to execute a search"
       end
 
-      gateway_params = { query: query, database: "ontoportal" }
+      gateway_params = {query: query, database: "ontoportal"}
 
       response = GATEWAY_CONNECTION.get("search", gateway_params)
 
@@ -37,8 +37,8 @@ class FederationController < ApplicationController
         doc = {                                                                               
           id:         item["@id"] || item["iri"],                                             
           prefLabel:  item["label"],                                                          
-          synonym:    item["synonyms"] || [],                                                 
-          definition: item["descriptions"] || [],                                             
+          synonym:    Array(item["synonyms"]) ,                                                 
+          definition: Array(item["descriptions"]),                                             
           obsolete:   item["obsolete"] || false,                                              
           matchType:  "",                 
           ontologyType: "",                                           
