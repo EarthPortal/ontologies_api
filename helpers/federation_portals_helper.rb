@@ -154,7 +154,7 @@ module Sinatra
 
 
 
-      # Solution A — N appels individuels (ancien, fallback)
+      #solution A
       def enrich_nvs_concepts_individual(collections)
         Parallel.each(collections, in_threads: [collections.size, 10].min) do |concept|
           detail_url = concept["@id"]
@@ -191,13 +191,12 @@ module Sinatra
             concept["links"]["mappings"] = same_as.map { |s| s.is_a?(Hash) ? s["@id"] : s.to_s }
           end
         rescue => e
-          # En cas d'erreur, on garde les champs par défaut
         end
       end
 
       NVS_SPARQL_URL = 'https://vocab.nerc.ac.uk/sparql/sparql'
 
-      # Solution B — 1 seul appel SPARQL batch (nouveau, rapide)
+      #solution B
       def enrich_nvs_concepts_sparql(collections)
         return if collections.empty?
 
@@ -287,7 +286,7 @@ module Sinatra
       end
 
 
-      
+
 
       def merge_results(results)
         collection = []
