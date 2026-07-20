@@ -8,6 +8,8 @@ Category = LinkedData::Models::Category
 
 Group = LinkedData::Models::Group
 
+ExternalTool = LinkedData::Models::ExternalTool
+
 Ontology = LinkedData::Models::Ontology
 
 OntologySubmission = LinkedData::Models::OntologySubmission
