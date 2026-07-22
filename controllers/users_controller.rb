@@ -11,7 +11,10 @@ class UsersController < ApplicationController
       else
         user = login_password_authenticate(params)
       end
-      user.show_apikey = true unless user.nil?
+      unless user.nil?
+        user.show_apikey = true
+        Array(user.externalTools).each { |tool| tool.show_apikey = true }
+      end
       reply user
     end
 
@@ -98,7 +101,6 @@ class UsersController < ApplicationController
     end
 
     private
-
 
     def create_user(send_notifications: true)
       params ||= @params
