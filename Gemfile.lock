@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/earthportal/ontologies_linked_data.git
-  revision: 2df5a0d6d28e1b4b6fe9a7d17a3abedd4889951b
+  revision: bdb5f72ce28b8b5f107e07814fe8dff95dff81d9
   branch: new-vm-deploy
   specs:
     ontologies_linked_data (0.0.1)
@@ -15,8 +15,10 @@ GIT
       pony
       rack
       rack-test
+      rdf-rdfxml
+      roo
       rsolr
-      rubyzip
+      rubyzip (= 1.3.0)
 
 GIT
   remote: https://github.com/ontoportal-lirmm/goo.git
@@ -306,6 +308,7 @@ GEM
       mime-types-data (~> 3.2025, >= 3.2025.0507)
     mime-types-data (3.2026.0701)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     minitest (5.27.0)
     minitest-fail-fast (0.1.0)
       minitest (~> 5)
@@ -344,6 +347,9 @@ GEM
       net-protocol
     net-ssh (7.3.0)
     netrc (0.11.0)
+    nokogiri (1.18.10)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     oj (3.17.5)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
@@ -436,6 +442,9 @@ GEM
       netrc (~> 0.8)
     retriable (3.1.2)
     rexml (3.4.4)
+    roo (2.10.1)
+      nokogiri (~> 1)
+      rubyzip (>= 1.3.0, < 3.0.0)
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
@@ -456,7 +465,7 @@ GEM
     ruby-progressbar (1.13.0)
     ruby-xxHash (0.4.0.2)
     ruby2_keywords (0.0.5)
-    rubyzip (3.4.1)
+    rubyzip (1.3.0)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
     securerandom (0.4.1)
