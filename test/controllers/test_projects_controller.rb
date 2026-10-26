@@ -62,6 +62,7 @@ class TestProjectsController < TestCase
     @p.type = "FundedProject"
     @p.source = LinkedData::Models::Project.project_sources.first
     @p.ontologyUsed = [@ont]
+    @p.keywords = ["test"]
     @p.save
     
     @projectParams = {
@@ -72,7 +73,8 @@ class TestProjectsController < TestCase
         creator: @p.creator.map {|u| u.username},
         type: @p.type,
         source: @p.source,
-        ontologyUsed: [@p.ontologyUsed.first.acronym]
+        ontologyUsed: [@p.ontologyUsed.first.acronym],
+        keywords: @p.keywords
     }
   end
 
@@ -146,7 +148,8 @@ class TestProjectsController < TestCase
       homePage: "http://example.org",
       type: "FundedProject",
       source: LinkedData::Models::Project.project_sources.first,
-      ontologyUsed: [@ont.acronym]
+      ontologyUsed: [@ont.acronym],
+      keywords: ["test"]
     }
     
     put "/projects/#{params[:acronym]}", MultiJson.dump(params), "CONTENT_TYPE" => "application/json"
